@@ -1,8 +1,9 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { Alert, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
+import { AppButton } from '@/components/app-button';
 import { HintRow } from '@/components/hint-row';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -35,8 +36,12 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
+            hello Climatewise!
           </ThemedText>
+          <AppButton
+            label="Get Started"
+            onPress={() => Alert.alert('Hello', 'The button works!')}
+          />
         </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
