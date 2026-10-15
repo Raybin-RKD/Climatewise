@@ -36,11 +36,16 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            hello Climatewise!
+            Hello ClimateWise!
           </ThemedText>
+
           <AppButton
             label="Get Started"
             onPress={() => Alert.alert('Hello', 'The button works!')}
+          />
+          <AppButton
+            label="Learn More"
+            onPress={() => Alert.alert('Learn', 'This will open the lessons.')}
           />
         </ThemedView>
 
