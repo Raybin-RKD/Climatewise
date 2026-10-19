@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
+import { Colors } from '@/constants/colors';
 
 type AppButtonProps = {
   label: string;

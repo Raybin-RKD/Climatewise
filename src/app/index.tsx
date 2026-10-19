@@ -4,13 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FeatureCard } from '@/components/feature-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Colors } from '@/constants/colors';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 
 const FEATURES = [
-  { id: 'learn', title: 'Learn', subtitle: 'Explore key concepts', color: '#1E9E54' },
-  { id: 'data', title: 'Explore Data', subtitle: 'See real climate data', color: '#2F7DF0' },
-  { id: 'quiz', title: 'Quiz', subtitle: 'Test your knowledge', color: '#6C5CE7' },
-  { id: 'challenge', title: 'Climate Challenge', subtitle: 'Make choices', color: '#F59E1B' },
+  { id: 'learn', title: 'Learn', subtitle: 'Explore key concepts', color: Colors.learn },
+  { id: 'data', title: 'Explore Data', subtitle: 'See real climate data', color: Colors.data },
+  { id: 'quiz', title: 'Quiz', subtitle: 'Test your knowledge', color: Colors.quiz },
+  { id: 'challenge', title: 'Climate Challenge', subtitle: 'Make choices', color: Colors.challenge },
 ];
 
 export default function HomeScreen() {
