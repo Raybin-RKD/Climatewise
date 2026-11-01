@@ -16,7 +16,7 @@ export function AppButton({ label, onPress }: AppButtonProps) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#0F7B4F',
+    backgroundColor: Colors.primary,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
