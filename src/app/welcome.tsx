@@ -19,7 +19,7 @@ export default function WelcomeScreen() {
         <ThemedText style={styles.center}>Learn. Understand. Take Action.</ThemedText>
         <ThemedText style={styles.center}>Small steps. Big change.</ThemedText>
 
-        <AppButton label="Get Started" onPress={() => router.replace('/')} />
+        <AppButton label="Get Started" onPress={() => router.push('/level')} />
       </SafeAreaView>
     </ThemedView>
   );
