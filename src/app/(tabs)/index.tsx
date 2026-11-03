@@ -1,5 +1,5 @@
-import { Redirect, useRouter, type Href } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useFocusEffect, useRouter, type Href } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { Alert, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -26,22 +26,33 @@ const FEATURES: Feature[] = [
   { id: 'challenge', title: 'Climate Challenge', subtitle: 'Make choices', color: Colors.challenge },
 ];
 
-type Status = 'loading' | 'new' | 'returning';
-
 export default function HomeScreen() {
   const router = useRouter();
-  const [status, setStatus] = useState<Status>('loading');
+  const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    hasOnboarded().then((done) => setStatus(done ? 'returning' : 'new'));
-  }, []);
+  // Runs every time Home comes into view, not only the first time.
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
 
-  if (status === 'loading') {
+      hasOnboarded().then((done) => {
+        if (!active) return;
+        if (done) {
+          setReady(true);
+        } else {
+          setReady(false);
+          router.replace('/welcome');
+        }
+      });
+
+      return () => {
+        active = false;
+      };
+    }, [router])
+  );
+
+  if (!ready) {
     return null;
-  }
-
-  if (status === 'new') {
-    return <Redirect href="/welcome" />;
   }
 
   const handlePress = (feature: Feature) => {

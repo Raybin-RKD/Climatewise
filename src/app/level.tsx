@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors } from '@/constants/colors';
 import { Spacing } from '@/constants/theme';
+import { setOnboarded } from '@/services/onboarding';
 
 const LEVELS = [
   {
@@ -31,6 +32,11 @@ export default function LevelScreen() {
   const router = useRouter();
   const [selected, setSelected] = useState('beginner');
 
+  const handleContinue = async () => {
+    await setOnboarded();
+    router.replace('/');
+  };
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -48,7 +54,7 @@ export default function LevelScreen() {
           </Pressable>
         ))}
 
-        <AppButton label="Continue" onPress={() => router.replace('/')} />
+        <AppButton label="Continue" onPress={handleContinue} />
       </SafeAreaView>
     </ThemedView>
   );
