@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AppButton } from '@/components/app-button';
 import { FeatureCard } from '@/components/feature-card';
+import { ProgressCard } from '@/components/progress-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors } from '@/constants/colors';
@@ -30,7 +31,6 @@ export default function HomeScreen() {
   const router = useRouter();
   const [ready, setReady] = useState(false);
 
-  // Runs every time Home comes into view, not only the first time.
   useFocusEffect(
     useCallback(() => {
       let active = true;
@@ -72,9 +72,12 @@ export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          Hello ClimateWise!
-        </ThemedText>
+        <ThemedView style={styles.header}>
+          <ThemedText type="title">Hello ClimateWise!</ThemedText>
+          <ThemedText type="small">Small steps make a big difference.</ThemedText>
+        </ThemedView>
+
+        <ProgressCard levelTitle="Level 1: Climate Basics" completed={2} total={5} />
 
         <ThemedView style={styles.grid}>
           {FEATURES.map((feature) => (
@@ -107,9 +110,9 @@ const styles = StyleSheet.create({
     paddingBottom: BottomTabInset + Spacing.three,
     maxWidth: MaxContentWidth,
   },
-  title: {
-    textAlign: 'center',
+  header: {
     marginTop: Spacing.four,
+    gap: Spacing.one,
   },
   grid: {
     flexDirection: 'row',

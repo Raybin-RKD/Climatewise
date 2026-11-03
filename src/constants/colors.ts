@@ -5,4 +5,5 @@ export const Colors = {
   quiz: '#6C5CE7',
   challenge: '#F59E1B',
   white: '#FFFFFF',
+  track: '#D9E8DF',
 };
